@@ -115,17 +115,20 @@ namespace BrickBreaker
                 ballY = -ballY;
             }
 
-            if (ball.Top > this.ClientSize.Height - ball.Height - player.Height && cnt > 0)
+            if (ball.Top > this.ClientSize.Height - ball.Height)
             {
-                cnt--;
-                string path = AppDomain.CurrentDomain.BaseDirectory + @"\img\" + cnt + ".png";
-                healthbar.Image = Image.FromFile(path);
+                if (cnt > 0)
+                {
+                    cnt--;
+                    string path = AppDomain.CurrentDomain.BaseDirectory + @"\img\" + cnt + ".png";
+                    healthbar.Image = Image.FromFile(path);
 
-                ballY = -ballY;
-            }
-            else if (ball.Top > this.ClientSize.Height - ball.Height && cnt == 0)
-            {
-                gameOver = true;
+                    ballY = -ballY;
+                }
+                else
+                {
+                    gameOver = true;
+                }
             }
         }
 
